@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cc37dacab6fda864385949657487603f
+timeCreated: 1461056674
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213197
+  packageName: Unity Terrain - URP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_URP/Prefabs/Rocks/Materials/Rock_D.mat
+  uploadId: 727820
