@@ -1,14 +1,7 @@
 fileFormatVersion: 2
-guid: e6fd4411c0e008642b42a086f0d297ca
+guid: 1d296d330d95cf14a8fd12220d6ffed1
 PrefabImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 213197
-  packageName: Unity Terrain - URP Demo Scene
-  packageVersion: 1.0.3
-  assetPath: Assets/TerrainDemoScene_URP/Prefabs/Details/Shrub.prefab
-  uploadId: 727820

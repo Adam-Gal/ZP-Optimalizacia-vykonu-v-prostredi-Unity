@@ -1,14 +1,7 @@
 fileFormatVersion: 2
-guid: 6629880e46886724fa0107d3035304e6
+guid: 4aa7993c6b781ae4eb0c6b6a1db5a9be
 PrefabImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 213197
-  packageName: Unity Terrain - URP Demo Scene
-  packageVersion: 1.0.3
-  assetPath: Assets/TerrainDemoScene_URP/Prefabs/Details/Fern_A.prefab
-  uploadId: 727820

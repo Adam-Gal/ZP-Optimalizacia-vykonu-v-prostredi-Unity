@@ -1,14 +1,7 @@
 fileFormatVersion: 2
-guid: cce04f533c148314abf74aff71206ec7
+guid: 73979a17815a1fe4d86eeab523896f10
 PrefabImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 213197
-  packageName: Unity Terrain - URP Demo Scene
-  packageVersion: 1.0.3
-  assetPath: Assets/TerrainDemoScene_URP/Prefabs/Details/Heather_A.prefab
-  uploadId: 727820

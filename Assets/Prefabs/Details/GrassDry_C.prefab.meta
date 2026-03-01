@@ -1,14 +1,7 @@
 fileFormatVersion: 2
-guid: 3d4dd2affe15db043a6502ae256cd0d4
+guid: 5d778d16848478b479b05ca695fb0264
 PrefabImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 213197
-  packageName: Unity Terrain - URP Demo Scene
-  packageVersion: 1.0.3
-  assetPath: Assets/TerrainDemoScene_URP/Prefabs/Details/GrassDry_C.prefab
-  uploadId: 727820

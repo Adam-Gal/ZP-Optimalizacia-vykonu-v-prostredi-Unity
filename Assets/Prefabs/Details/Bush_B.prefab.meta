@@ -1,14 +1,7 @@
 fileFormatVersion: 2
-guid: b273de0d6e5818a4cb3195ce4f376ccb
+guid: 33f09be26c5c4864498ef2e529f68ac3
 PrefabImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 213197
-  packageName: Unity Terrain - URP Demo Scene
-  packageVersion: 1.0.3
-  assetPath: Assets/TerrainDemoScene_URP/Prefabs/Details/Bush_B.prefab
-  uploadId: 727820
