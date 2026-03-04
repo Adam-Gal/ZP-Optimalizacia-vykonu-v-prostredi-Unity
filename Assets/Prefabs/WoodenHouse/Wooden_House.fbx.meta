@@ -1,7 +1,14 @@
 fileFormatVersion: 2
 guid: 19ce7ae364ae0564fbb2938ea82887f2
+AssetOrigin:
+  serializedVersion: 1
+  productId: 270889
+  packageName: Wooden House - Free - Low Poly
+  packageVersion: 1.0.1
+  assetPath: Assets/Scenes/Acronym Studio - Wooden Houses Free/Models/Wooden_House.fbx
+  uploadId: 649506
 ModelImporter:
-  serializedVersion: 22200
+  serializedVersion: 24200
   internalIDToNameTable: []
   externalObjects:
   - first:
@@ -21,8 +28,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -63,6 +68,9 @@ ModelImporter:
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
     optimizeBones: 1
+    generateMeshLods: 1
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -112,10 +120,3 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 270889
-  packageName: Wooden House - Free - Low Poly
-  packageVersion: 1.0.1
-  assetPath: Assets/Scenes/Acronym Studio - Wooden Houses Free/Models/Wooden_House.fbx
-  uploadId: 649506
