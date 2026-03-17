@@ -20,63 +20,57 @@ public class BenchmarkRecorder : MonoBehaviour
     struct FrameSample
     {
         public int frame;
-        public double frameTime;
         public double fps;
-
+        public double frameTime;
+        
         public double cpuFrame;
-        public double mainThread;
         public double gpuFrame;
 
         public long drawCalls;
-        public long batches;
         public long setPass;
+        public long batches;
 
         public long triangles;
-
-        public double gcAlloc;
+        public long vertices;
+        
         public double totalMem;
         public double vram;
 
         public long shadowCasters;
-        public long savedByBatching;
     }
 
     List<FrameSample> samples = new List<FrameSample>();
 
     ProfilerRecorder cpuFrameTime;
-    ProfilerRecorder mainThreadTime;
     ProfilerRecorder gpuFrameTime;
     ProfilerRecorder drawCalls;
-    ProfilerRecorder batches;
     ProfilerRecorder setPassCalls;
+    ProfilerRecorder batches;
     ProfilerRecorder triangles;
-    ProfilerRecorder gcAlloc;
+    ProfilerRecorder vertices;
     ProfilerRecorder totalMemory;
     ProfilerRecorder vram;
     ProfilerRecorder shadowCasters;
-    ProfilerRecorder savedByBatching;
 
     void Start()
     {
-        cpuFrameTime = ProfilerRecorder.StartNew(ProfilerCategory.Internal, "CPU Frame Time");
-        mainThreadTime = ProfilerRecorder.StartNew(ProfilerCategory.Internal, "Main Thread");
+        cpuFrameTime = ProfilerRecorder.StartNew(ProfilerCategory.Internal, "CPU Total Frame Time");
         gpuFrameTime = ProfilerRecorder.StartNew(ProfilerCategory.Render, "GPU Frame Time");
         drawCalls = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Draw Calls Count");
-        batches = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Batches Count");
         setPassCalls = ProfilerRecorder.StartNew(ProfilerCategory.Render, "SetPass Calls Count");
+        batches = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Batches Count");
         triangles = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Triangles Count");
-        gcAlloc = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "GC Allocated In Frame");
+        vertices = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Vertices Count");
         totalMemory = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "Total Used Memory");
         vram = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "Gfx Used Memory");
         shadowCasters = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Shadow Casters Count");
-        savedByBatching = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Batches Saved By Batching");
     }
 
     void Update()
     {
         timer += Time.unscaledDeltaTime;
 
-        if (timer > warmupDuration && timer < warmupDuration + benchmarkDuration)
+        if (timer >= warmupDuration && timer <= warmupDuration + benchmarkDuration)
         {
             recording = true;
         }
@@ -96,23 +90,22 @@ public class BenchmarkRecorder : MonoBehaviour
             s.frameTime = frameTimeMs;
             s.fps = 1000.0 / frameTimeMs;
 
-            const double nsToMs = 1e-6;
+            const double nsToMs = 0.000001;
             s.cpuFrame = cpuFrameTime.LastValue * nsToMs;
-            s.mainThread = mainThreadTime.LastValue * nsToMs;
             s.gpuFrame = gpuFrameTime.LastValue * nsToMs;
             
             s.drawCalls = drawCalls.LastValue;
-            s.batches = batches.LastValue;
             s.setPass = setPassCalls.LastValue;
+            s.batches = batches.LastValue;
+            
             s.triangles = triangles.LastValue;
+            s.vertices = vertices.LastValue;
 
             const double bytesToMB = 1.0 / (1024.0 * 1024.0);
-            s.gcAlloc = gcAlloc.LastValue * bytesToMB;
             s.totalMem = totalMemory.LastValue * bytesToMB;
             s.vram = vram.LastValue * bytesToMB;
 
             s.shadowCasters = shadowCasters.LastValue;
-            s.savedByBatching = savedByBatching.LastValue;
             samples.Add(s);
         }
 
@@ -127,24 +120,23 @@ public class BenchmarkRecorder : MonoBehaviour
     {
         StringBuilder sb = new StringBuilder();
 
-        sb.AppendLine("frame,frameTime,fps,cpuFrameTime,mainThreadTime,gpuFrameTime,drawCalls,batches,setPassCalls,triangles,gcAlloc,totalMemory,vramUsage,shadowCasters,savedByBatching");        foreach (var s in samples)
+        sb.AppendLine("frame,fps,frameTime,cpuFrameTime,gpuFrameTime,drawCalls,setPassCalls,batches,triangles,vertices,totalMemory,vramUsage,shadowCasters");        
+        foreach (var s in samples)
         {
             sb.AppendLine(
                 s.frame + "," +
-                s.frameTime.ToString(CultureInfo.InvariantCulture) + "," +
                 s.fps.ToString(CultureInfo.InvariantCulture) + "," +
+                s.frameTime.ToString(CultureInfo.InvariantCulture) + "," +
                 s.cpuFrame.ToString(CultureInfo.InvariantCulture) + "," +
-                s.mainThread.ToString(CultureInfo.InvariantCulture) + "," +
                 s.gpuFrame.ToString(CultureInfo.InvariantCulture) + "," +
                 s.drawCalls + "," +
-                s.batches + "," +
                 s.setPass + "," +
+                s.batches + "," +
                 s.triangles + "," +
-                s.gcAlloc.ToString(CultureInfo.InvariantCulture) + "," +
+                s.vertices + "," +
                 s.totalMem.ToString(CultureInfo.InvariantCulture) + "," +
                 s.vram.ToString(CultureInfo.InvariantCulture) + "," +
-                s.shadowCasters + "," +
-                s.savedByBatching
+                s.shadowCasters
             );
         }
 
